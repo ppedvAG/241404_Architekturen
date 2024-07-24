@@ -7,6 +7,16 @@
             return checked(a + b);
         }
 
+        public bool IsWeekend()
+        {
+            return DateTime.Now.DayOfWeek == DayOfWeek.Saturday ||
+                   DateTime.Now.DayOfWeek == DayOfWeek.Sunday;
+        }
 
+        //public bool IsWeekendSauber(DateTime dt)
+        //{
+        //    return dt.DayOfWeek == DayOfWeek.Saturday ||
+        //           dt.DayOfWeek == DayOfWeek.Sunday;
+        //}
     }
 }

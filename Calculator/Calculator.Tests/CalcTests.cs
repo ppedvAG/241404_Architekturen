@@ -1,3 +1,5 @@
+using Microsoft.QualityTools.Testing.Fakes;
+
 namespace Calculator.Tests
 {
     public class CalcTests
@@ -29,10 +31,10 @@ namespace Calculator.Tests
         }
 
         [Theory]
-        [InlineData(0,0,0)]
-        [InlineData(2,2,4)]
-        [InlineData(-2,5,3)]
-        [InlineData(-2,-5,-7)]
+        [InlineData(0, 0, 0)]
+        [InlineData(2, 2, 4)]
+        [InlineData(-2, 5, 3)]
+        [InlineData(-2, -5, -7)]
         public void Sum_tests_with_results(int a, int b, int exp)
         {
             //Arrange
@@ -52,6 +54,30 @@ namespace Calculator.Tests
             var calc = new Calc();
 
             Assert.Throws<OverflowException>(() => calc.Sum(int.MaxValue, 1));
+        }
+
+        [Fact]
+        public void Calc_IsWeekend()
+        {
+            var calc = new Calc();
+
+            using (ShimsContext.Create())
+            {
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2024, 7, 22);
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2024, 7, 23);
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2024, 7, 24);
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2024, 7, 25);
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2024, 7, 26);
+                Assert.False(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2024, 7, 27);
+                Assert.True(calc.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2024, 7, 28);
+                Assert.True(calc.IsWeekend());
+            }
         }
     }
 }
