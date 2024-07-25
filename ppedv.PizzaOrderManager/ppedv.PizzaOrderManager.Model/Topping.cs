@@ -4,6 +4,6 @@
     {
         public string Name { get; set; } = string.Empty;
         public decimal Price { get; set; }
-        public ICollection<Pizza> Pizzas { get; set; } = new HashSet<Pizza>();
+        public virtual ICollection<Pizza> Pizzas { get; set; } = new HashSet<Pizza>();
     }
 }

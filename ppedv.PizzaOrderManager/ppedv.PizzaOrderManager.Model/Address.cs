@@ -8,7 +8,7 @@
         public string City { get; set; } = string.Empty;
         public string ZipCode { get; set; } = string.Empty;
 
-        public ICollection<Order> AsDeliver { get; set; } = new HashSet<Order>();
-        public ICollection<Order> AsBilling { get; set; } = new HashSet<Order>();
+        public virtual ICollection<Order> AsDeliver { get; set; } = new HashSet<Order>();
+        public virtual ICollection<Order> AsBilling { get; set; } = new HashSet<Order>();
     }
 }

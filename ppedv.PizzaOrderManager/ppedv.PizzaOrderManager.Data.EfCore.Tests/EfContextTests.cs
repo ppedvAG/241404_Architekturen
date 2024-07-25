@@ -1,5 +1,7 @@
 using AutoFixture;
 using AutoFixture.Kernel;
+using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using ppedv.PizzaOrderManager.Model;
 using System.Data;
 using System.Reflection;
@@ -123,13 +125,39 @@ namespace ppedv.PizzaOrderManager.Data.EfCore.Tests
             fix.Behaviors.Add(new OmitOnRecursionBehavior());
             fix.Customizations.Add(new PropertyNameOmitter(nameof(Entity.Id)));
             var testPizza = fix.Create<Pizza>();
-            var con = new EfContext(conString);
-            con.Database.EnsureCreated();
+            using (var con = new EfContext(conString))
+            {
+                con.Database.EnsureCreated();
 
-            con.Add(testPizza);
-            var rows = con.SaveChanges();
+                con.Add(testPizza);
+                var rows = con.SaveChanges();
 
-            Assert.True(rows > 0);
+                //Assert.True(rows > 0);
+                rows.Should().BeGreaterThan(10);
+            }
+
+            using (var con = new EfContext(conString))
+            {
+                //eager Loading
+                //var query = con.Pizzas.Where(x => x.Id == testPizza.Id);
+                //query = query.Include(x => x.Toppings);
+                //query = query.Include(x => x.Items).ThenInclude(x => x.Order).ThenInclude(x => x.BillingAddress);
+                //query = query.Include(x => x.Items).ThenInclude(x => x.Order).ThenInclude(x => x.DeliveryAddress);
+                //var loaded = query.FirstOrDefault();
+
+
+                ////explizit loading
+                //var loaded = con.Pizzas.Find(testPizza.Id);
+                //con.Entry(loaded).Collection(x => x.Toppings);
+                //con.Entry(loaded).Collection(x => x.Items);
+
+                //lazy loading
+                var loaded = con.Pizzas.Find(testPizza.Id);
+
+                loaded.Should().NotBeNull();
+                loaded.Should().BeEquivalentTo(testPizza, x => x.IgnoringCyclicReferences());
+            }
+
         }
     }
 

@@ -4,7 +4,7 @@
     {
         public DateTime OrderDate { get; set; } = DateTime.Now;
 
-        public Address? DeliveryAddress { get; set; }
-        public Address? BillingAddress { get; set; }
+        public virtual Address? DeliveryAddress { get; set; }
+        public virtual Address? BillingAddress { get; set; }
     }
 }

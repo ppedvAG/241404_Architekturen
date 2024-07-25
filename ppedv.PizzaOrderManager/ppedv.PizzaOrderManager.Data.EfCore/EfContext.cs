@@ -22,6 +22,7 @@ namespace ppedv.PizzaOrderManager.Data.EfCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(conString)
+                          .UseLazyLoadingProxies()
                           .LogTo(msg => Debug.WriteLine(msg));
         }
 
