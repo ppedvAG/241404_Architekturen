@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35118.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.Model", "ppedv.PizzaOrderManager.Model\ppedv.PizzaOrderManager.Model.csproj", "{3D4007C5-A806-456D-9C33-BCD5D42F313D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D4007C5-A806-456D-9C33-BCD5D42F313D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4007C5-A806-456D-9C33-BCD5D42F313D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4007C5-A806-456D-9C33-BCD5D42F313D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4007C5-A806-456D-9C33-BCD5D42F313D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76BD4E68-F577-4ADF-8617-E919C20CD0D2}
+	EndGlobalSection
+EndGlobal
