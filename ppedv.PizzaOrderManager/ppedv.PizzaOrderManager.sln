@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.Log
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.UI.DevConsole", "ppedv.PizzaOrderManager.UI.DevConsole\ppedv.PizzaOrderManager.UI.DevConsole.csproj", "{144CDFA5-D2A1-436F-B472-632FB16E429B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.UI.WPF", "ppedv.PizzaOrderManager.UI.WPF\ppedv.PizzaOrderManager.UI.WPF.csproj", "{5B25E083-32F2-449E-B531-34EB33B9564F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{144CDFA5-D2A1-436F-B472-632FB16E429B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{144CDFA5-D2A1-436F-B472-632FB16E429B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{144CDFA5-D2A1-436F-B472-632FB16E429B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B25E083-32F2-449E-B531-34EB33B9564F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B25E083-32F2-449E-B531-34EB33B9564F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B25E083-32F2-449E-B531-34EB33B9564F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B25E083-32F2-449E-B531-34EB33B9564F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
