@@ -3,13 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ppedv.PizzaOrderManager.UI.WPF.Views"
+             xmlns:local="clr-namespace:ppedv.PizzaOrderManager.UI.WPF.Views" 
+             xmlns:viewmodels="clr-namespace:ppedv.PizzaOrderManager.UI.WPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodels:PizzaViewModel/>
+    </UserControl.DataContext>
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top" Margin="12">
-            <Button>Laden</Button>
+            <Button Command="{Binding AddNewCommand}">Neu</Button>
             <Button>Speichern</Button>
             <Button>Löschen</Button>
         </WrapPanel>
@@ -20,7 +24,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid/>
+            <DataGrid ItemsSource="{Binding PizzaList}"
+                      SelectedItem="{Binding SelectedPizza}"/>
 
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
 
@@ -38,13 +43,13 @@
                 </Grid.RowDefinitions>
 
                 <Label>Name</Label>
-                <TextBox Grid.Column="1"/>
+                <TextBox Grid.Column="1" Text="{Binding SelectedPizza.Name}"/>
                 <Label Grid.Row="1">Price</Label>
-                <TextBox Grid.Row="1" Grid.Column="2"/>
+                <TextBox Text="{Binding SelectedPizza.Price}" Grid.Row="1" Grid.Column="2"/>
                 <Label Grid.Row="2">Size</Label>
-                <ComboBox Grid.Row="2" Grid.Column="1"/>
+                <ComboBox Text="{Binding SelectedPizza.Size}" Grid.Row="2" Grid.Column="1"/>
                 <GroupBox Header="Topping" Grid.Row="3" Grid.ColumnSpan="2">
-                    <ListBox/>
+                    <DataGrid ItemsSource="{Binding SelectedPizza.Toppings}"/>
                 </GroupBox>
             </Grid>
 
