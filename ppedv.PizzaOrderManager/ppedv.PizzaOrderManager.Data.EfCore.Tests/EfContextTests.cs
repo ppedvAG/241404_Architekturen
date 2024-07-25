@@ -1,5 +1,8 @@
+using AutoFixture;
+using AutoFixture.Kernel;
 using ppedv.PizzaOrderManager.Model;
 using System.Data;
+using System.Reflection;
 
 namespace ppedv.PizzaOrderManager.Data.EfCore.Tests
 {
@@ -72,7 +75,7 @@ namespace ppedv.PizzaOrderManager.Data.EfCore.Tests
 
                 Assert.NotNull(loaded);
                 loaded.Name = newName;
-                var rows= con.SaveChanges();
+                var rows = con.SaveChanges();
                 Assert.Equal(1, rows);
             }
 
@@ -110,6 +113,42 @@ namespace ppedv.PizzaOrderManager.Data.EfCore.Tests
                 var loaded = con.Pizzas.Find(testPizza.Id);
                 Assert.Null(loaded);
             }
+        }
+
+
+        [Fact]
+        public void Can_create_Pizza_with_AutoFixture()
+        {
+            var fix = new Fixture();
+            fix.Behaviors.Add(new OmitOnRecursionBehavior());
+            fix.Customizations.Add(new PropertyNameOmitter(nameof(Entity.Id)));
+            var testPizza = fix.Create<Pizza>();
+            var con = new EfContext(conString);
+            con.Database.EnsureCreated();
+
+            con.Add(testPizza);
+            var rows = con.SaveChanges();
+
+            Assert.True(rows > 0);
+        }
+    }
+
+    internal class PropertyNameOmitter : ISpecimenBuilder
+    {
+        private readonly IEnumerable<string> names;
+
+        internal PropertyNameOmitter(params string[] names)
+        {
+            this.names = names;
+        }
+
+        public object Create(object request, ISpecimenContext context)
+        {
+            var propInfo = request as PropertyInfo;
+            if (propInfo != null && names.Contains(propInfo.Name))
+                return new OmitSpecimen();
+
+            return new NoSpecimen();
         }
     }
 }
