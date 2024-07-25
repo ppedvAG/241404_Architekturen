@@ -1,4 +1,4 @@
-﻿namespace ppedv.PizzaOrderManager.Model
+﻿namespace ppedv.PizzaOrderManager.Model.DomainModel
 {
     public class Address : Entity
     {

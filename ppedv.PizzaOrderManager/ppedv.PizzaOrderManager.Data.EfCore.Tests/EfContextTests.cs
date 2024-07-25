@@ -2,7 +2,7 @@ using AutoFixture;
 using AutoFixture.Kernel;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using ppedv.PizzaOrderManager.Model;
+using ppedv.PizzaOrderManager.Model.DomainModel;
 using System.Data;
 using System.Reflection;
 

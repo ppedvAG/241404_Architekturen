@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ppedv.PizzaOrderManager.Model;
+using ppedv.PizzaOrderManager.Model.DomainModel;
 using System.Diagnostics;
 
 namespace ppedv.PizzaOrderManager.Data.EfCore
