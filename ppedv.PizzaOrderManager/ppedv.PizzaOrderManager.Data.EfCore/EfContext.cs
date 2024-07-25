@@ -25,5 +25,11 @@ namespace ppedv.PizzaOrderManager.Data.EfCore
                           .LogTo(msg => Debug.WriteLine(msg));
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Address>().HasMany(x => x.AsBilling).WithOne(x => x.BillingAddress);
+            modelBuilder.Entity<Address>().HasMany(x => x.AsDeliver).WithOne(x => x.DeliveryAddress);
+        }
+
     }
 }

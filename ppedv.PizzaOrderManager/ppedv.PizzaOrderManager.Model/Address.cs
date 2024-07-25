@@ -9,6 +9,6 @@
         public string ZipCode { get; set; } = string.Empty;
 
         public ICollection<Order> AsDeliver { get; set; } = new HashSet<Order>();
-        public ICollection<Order> BillingDeliver { get; set; } = new HashSet<Order>();
+        public ICollection<Order> AsBilling { get; set; } = new HashSet<Order>();
     }
 }
