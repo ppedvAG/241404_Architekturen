@@ -11,7 +11,7 @@ namespace ppedv.PizzaOrderManager.Logic.Tests
         [InlineData(0)]
         public void GetMyOrders_throws_ArgumentEx(int id)
         {
-            var os = new OrderService(null);
+            var os = new OrderService(null,null);
 
             Assert.Throws<ArgumentException>(() => os.GetMyOrders(id));
         }
@@ -19,7 +19,7 @@ namespace ppedv.PizzaOrderManager.Logic.Tests
         [Fact]
         public void GetMyOrders_if_my_id_was_a_delivery_address_it_should_be_in_the_result()
         {
-            var os = new OrderService(new TestRepo());
+            var os = new OrderService(new TestRepo(),null);
 
             var result = os.GetMyOrders(2);
 
@@ -41,53 +41,82 @@ namespace ppedv.PizzaOrderManager.Logic.Tests
                 };
                 return result;
             });
-            var os = new OrderService(repoMock.Object);
+            var os = new OrderService(repoMock.Object,null);
 
             var result = os.GetMyOrders(2);
 
             Assert.Equal("A2", result.First().DeliveryAddress.Name1);
         }
-    }
 
-    class TestRepo : IRepository
-    {
-        public void Add<T>(T entity) where T : Entity
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Delete<T>(T entity) where T : Entity
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<T> GetAll<T>() where T : Entity
+
+        [Fact]
+        public void PlaceOrder_ThrowsArgumentNullException_WhenPizzaIsNull()
         {
-            if (typeof(T) == typeof(Order))
+            var os = new OrderService(null, null);
+
+            // Arrange
+            var order = new Order
             {
-                var result = new List<Order>();
-                result.Add(new Order() { DeliveryAddress = new Address() { Id = 1, Name1 = "A1" } });
-                result.Add(new Order() { DeliveryAddress = new Address() { Id = 2, Name1 = "A2" } });
-                result.Add(new Order() { DeliveryAddress = new Address() { Id = 3, Name1 = "A3" } });
-                return result.Cast<T>();
+                Items = new List<OrderItem>
+            {
+                new OrderItem { Pizza = null }
             }
+            };
 
-            throw new NotImplementedException();
+            // Act & Assert
+            var exception = Assert.Throws<ArgumentNullException>(() => os.PlaceOrder(order));
+            Assert.Equal("Die Pizza darf nicht null sein", exception.ParamName);
         }
 
-        public T? GetById<T>(int id) where T : Entity
+        [Fact]
+        public void PlaceOrder_ThrowsInvalidProgramException_WhenPizzaIsNotAvailable()
         {
-            throw new NotImplementedException();
+            var pizzaServiceMock = new Mock<IPizzaService>();
+            var os = new OrderService(null, pizzaServiceMock.Object);
+
+            // Arrange
+            var pizza = new Pizza { Id = 1, Name = "Margherita" };
+            var order = new Order
+            {
+                Items = new List<OrderItem>
+            {
+                new OrderItem { Pizza = pizza }
+            }
+            };
+
+            pizzaServiceMock.Setup(ps => ps.IsPizzaAvailable(pizza.Id)).Returns(false);
+
+            // Act & Assert
+            var exception = Assert.Throws<InvalidProgramException>(() => os.PlaceOrder(order));
+            Assert.Equal($"Die Pizza {pizza.Name} mit der ID {pizza.Id} ist nicht verfügbar", exception.Message);
         }
 
-        public int SaveChanges()
+        [Fact]
+        public void PlaceOrder_AddsOrder_WhenPizzaIsAvailable()
         {
-            throw new NotImplementedException();
-        }
+            var repoMock = new Mock<IRepository>();
+            var pizzaServiceMock = new Mock<IPizzaService>();
+            var os = new OrderService(repoMock.Object,pizzaServiceMock.Object);
+            // Arrange
+            var pizza = new Pizza { Id = 1, Name = "Margherita" };
+            var order = new Order
+            {
+                Items = new List<OrderItem>
+            {
+                new OrderItem { Pizza = pizza }
+            }
+            };
 
-        public void Update<T>(T entity) where T : Entity
-        {
-            throw new NotImplementedException();
+            pizzaServiceMock.Setup(ps => ps.IsPizzaAvailable(pizza.Id)).Returns(true);
+
+            // Act
+            os.PlaceOrder(order);
+
+            // Assert
+            repoMock.Verify(r => r.Add(order), Times.Once);
+            repoMock.Verify(r => r.SaveChanges(), Times.Exactly(1));
         }
     }
 }
