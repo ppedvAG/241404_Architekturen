@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35118.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.Model", "ppedv.PizzaOrderManager.Model\ppedv.PizzaOrderManager.Model.csproj", "{3D4007C5-A806-456D-9C33-BCD5D42F313D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.Model", "ppedv.PizzaOrderManager.Model\ppedv.PizzaOrderManager.Model.csproj", "{3D4007C5-A806-456D-9C33-BCD5D42F313D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.Data.EfCore", "ppedv.PizzaOrderManager.Data.EfCore\ppedv.PizzaOrderManager.Data.EfCore.csproj", "{D460587C-1C0D-496D-B9F2-FAEFBB7E2777}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.Data.EfCore", "ppedv.PizzaOrderManager.Data.EfCore\ppedv.PizzaOrderManager.Data.EfCore.csproj", "{D460587C-1C0D-496D-B9F2-FAEFBB7E2777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.Data.EfCore.Tests", "ppedv.PizzaOrderManager.Data.EfCore.Tests\ppedv.PizzaOrderManager.Data.EfCore.Tests.csproj", "{27F4A8F6-DDAC-4587-AF0C-0C3527225A0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.Data.EfCore.Tests", "ppedv.PizzaOrderManager.Data.EfCore.Tests\ppedv.PizzaOrderManager.Data.EfCore.Tests.csproj", "{27F4A8F6-DDAC-4587-AF0C-0C3527225A0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.Logic", "ppedv.PizzaOrderManager.Logic\ppedv.PizzaOrderManager.Logic.csproj", "{847699E4-725D-4018-9150-265815370BA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.Logic", "ppedv.PizzaOrderManager.Logic\ppedv.PizzaOrderManager.Logic.csproj", "{847699E4-725D-4018-9150-265815370BA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.UI.DevConsole", "ppedv.PizzaOrderManager.UI.DevConsole\ppedv.PizzaOrderManager.UI.DevConsole.csproj", "{144CDFA5-D2A1-436F-B472-632FB16E429B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.UI.DevConsole", "ppedv.PizzaOrderManager.UI.DevConsole\ppedv.PizzaOrderManager.UI.DevConsole.csproj", "{144CDFA5-D2A1-436F-B472-632FB16E429B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.UI.WPF", "ppedv.PizzaOrderManager.UI.WPF\ppedv.PizzaOrderManager.UI.WPF.csproj", "{5B25E083-32F2-449E-B531-34EB33B9564F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.UI.WPF", "ppedv.PizzaOrderManager.UI.WPF\ppedv.PizzaOrderManager.UI.WPF.csproj", "{5B25E083-32F2-449E-B531-34EB33B9564F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.UI.Web_MVC", "ppedv.PizzaOrderManager.UI.Web_MVC\ppedv.PizzaOrderManager.UI.Web_MVC.csproj", "{811F4414-6898-43F4-93F6-4E4E8AEC732C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{5B25E083-32F2-449E-B531-34EB33B9564F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B25E083-32F2-449E-B531-34EB33B9564F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B25E083-32F2-449E-B531-34EB33B9564F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{811F4414-6898-43F4-93F6-4E4E8AEC732C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{811F4414-6898-43F4-93F6-4E4E8AEC732C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{811F4414-6898-43F4-93F6-4E4E8AEC732C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{811F4414-6898-43F4-93F6-4E4E8AEC732C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
