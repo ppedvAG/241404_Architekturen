@@ -1,13 +1,41 @@
 ﻿using ppedv.PizzaOrderManager.Model.DomainModel;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Input;
 
 namespace ppedv.PizzaOrderManager.UI.WPF.ViewModels
 {
-    public class PizzaViewModel
+    public class PizzaViewModel : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public ObservableCollection<Pizza> PizzaList { get; set; } = new ObservableCollection<Pizza>();
-        public Pizza SelectedPizza { get; set; }
+        
+        private Pizza selectedPizza;
+        public Pizza SelectedPizza
+        {
+            get => selectedPizza;
+            set
+            {
+                selectedPizza = value;
+                //PropertyChanged.Invoke(this, new PropertyChangedEventArgs("SelectedPizza"));
+                //PropertyChanged.Invoke(this, new PropertyChangedEventArgs("PreisMitSteuer"));
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(""));
+            }
+        }
+
+        public string PreisMitSteuer
+        {
+            get
+            {
+                if (SelectedPizza == null)
+                    return "---";
+                
+                return (SelectedPizza.Price * 1.19m).ToString("c",new CultureInfo("de-DE")); 
+            }
+        }
 
         public AddNewCommand AddNewCommand { get; set; }
 

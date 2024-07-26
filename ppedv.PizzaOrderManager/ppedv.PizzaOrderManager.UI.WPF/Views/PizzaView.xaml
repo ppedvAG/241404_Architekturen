@@ -44,7 +44,10 @@
 
                 <Label>Name</Label>
                 <TextBox Grid.Column="1" Text="{Binding SelectedPizza.Name}"/>
-                <Label Grid.Row="1">Price</Label>
+                <StackPanel Grid.Row="1">
+                    <Label >Price</Label>
+                    <TextBlock Text="{Binding PreisMitSteuer}"/>
+                </StackPanel>
                 <TextBox Text="{Binding SelectedPizza.Price}" Grid.Row="1" Grid.Column="2"/>
                 <Label Grid.Row="2">Size</Label>
                 <ComboBox Text="{Binding SelectedPizza.Size}" Grid.Row="2" Grid.Column="1"/>

@@ -25,7 +25,7 @@ string conString = "Server=(localdb)\\mssqllocaldb;Database=PizzaOrderManager_te
 //Di per AutoFac
 var builder = new ContainerBuilder();
 builder.RegisterType<OrderService>();
-builder.Register(x => new EfContextIRepositoryAdapter(conString)).AsImplementedInterfaces().SingleInstance();
+builder.Register(x => new EfContextIRepositoryAdapter(conString)).As<IRepository>().SingleInstance();
 var container = builder.Build();
 
 IRepository repo = container.Resolve<IRepository>();
