@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.UI.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.UI.WPF", "ppedv.PizzaOrderManager.UI.WPF\ppedv.PizzaOrderManager.UI.WPF.csproj", "{5B25E083-32F2-449E-B531-34EB33B9564F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.UI.Web_MVC", "ppedv.PizzaOrderManager.UI.Web_MVC\ppedv.PizzaOrderManager.UI.Web_MVC.csproj", "{811F4414-6898-43F4-93F6-4E4E8AEC732C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.PizzaOrderManager.UI.Web_MVC", "ppedv.PizzaOrderManager.UI.Web_MVC\ppedv.PizzaOrderManager.UI.Web_MVC.csproj", "{811F4414-6898-43F4-93F6-4E4E8AEC732C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.API", "ppedv.PizzaOrderManager.API\ppedv.PizzaOrderManager.API.csproj", "{3C5AD4DD-8F14-4BF3-95E6-518AAE1496FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.PizzaOrderManager.Logic.Tests", "ppedv.PizzaOrderManager.Logic.Tests\ppedv.PizzaOrderManager.Logic.Tests.csproj", "{8B9E3D71-CDD9-4A1E-BC18-19CCAF0E5B90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{811F4414-6898-43F4-93F6-4E4E8AEC732C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{811F4414-6898-43F4-93F6-4E4E8AEC732C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{811F4414-6898-43F4-93F6-4E4E8AEC732C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5AD4DD-8F14-4BF3-95E6-518AAE1496FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5AD4DD-8F14-4BF3-95E6-518AAE1496FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5AD4DD-8F14-4BF3-95E6-518AAE1496FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5AD4DD-8F14-4BF3-95E6-518AAE1496FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B9E3D71-CDD9-4A1E-BC18-19CCAF0E5B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B9E3D71-CDD9-4A1E-BC18-19CCAF0E5B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B9E3D71-CDD9-4A1E-BC18-19CCAF0E5B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B9E3D71-CDD9-4A1E-BC18-19CCAF0E5B90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

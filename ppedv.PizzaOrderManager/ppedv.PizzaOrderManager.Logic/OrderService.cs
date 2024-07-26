@@ -19,8 +19,12 @@ namespace ppedv.PizzaOrderManager.Logic
 
         public IEnumerable<Order> GetMyOrders(int addressId)
         {
-            return repository.GetAll<Order>().Where(x => x.DeliveryAddress?.Id == addressId ||
-                                                         x.BillingAddress?.Id == addressId);
+            if (addressId <= 0) 
+                throw new ArgumentException("Id kann ich nicht kleiner als 1 sein");
+
+            return repository.GetAll<Order>()
+                             .Where(x => x.DeliveryAddress?.Id == addressId ||
+                                         x.BillingAddress?.Id == addressId);
         }
 
         public bool GetOrderStatus(int orderId)
